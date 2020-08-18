@@ -17,7 +17,7 @@ FlexBoard is a project management board to enhance work quality by providing wor
 - [ ] Set a reminder for due date
 
 ##3. Wireframes
-![Wireframe](http://i.imgur.com/ulTSfFk.png)
+![Wireframe](https://i.imgur.com/ulTSfFK.png)
 
 ##4. Architecture and Technology
   -- Javascript
