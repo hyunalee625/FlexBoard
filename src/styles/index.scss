@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+}
+.main-flexboard-container {
+    font-family: Courier, monospace;
+    /*background-color: rgb(212, 231, 252);*/
+    background-image: linear-gradient(120deg, rgb(210, 227, 247), rgb(121, 176, 240));
+    height: 710px;
+    padding: 1rem;
+    
+}
+.flexboard-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.flexboard-header {
+    font-size: 55px;
+    text-align: center;
+}
+
+
+
+.main-board-container {
+    /*background-color: rgb(139, 223, 157);*/
+    display: grid;
+    /*grid-template-rows: max-content auto;*/
+    padding: 10px;
+    justify-content: center;
+    
+}
+
+.sub-board-container {
+    display: grid;
+    grid-auto-columns: 350px;
+    grid-auto-flow: column;
+    height: 550px;
+    padding: 10px;
+}
+
+
+.card-board-container {
+
+
+    /*.new-card-btn {
+        display: flex;
+        padding-left: 50px;
+        box-sizing: border-box;
+        justify-content: flex-end;
+    }*/
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form input, form button {
+        font-size: 17px;
+        border: none;
+        padding: 6px;
+        margin-top: 7px;    }
+
+    input {
+        width: 225px;
+        background-color: rgb(239, 243, 250);
+        border-radius: 12px;
+        margin-right: 5px;
+    }
+
+    .task-btn {
+        /*background-color: rgb(239, 243, 250);*/
+        /*justify-content: flex-end;
+        position: relative;*/
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+    }
+   
+    .stage {
+        /*text-align: center;*/
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 15px;
+        /*position: relative;
+        left: 50%;
+        transform: translate(-50%);*/
+    }
+
+    
+    #todo-board, #doing-board, #done-board {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+    #todo-board {
+        background-color: rgb(184, 190, 228);
+        border-radius: 12px;
+        height: 550px;
+        width: 300px;
+    }
+
+    #doing-board {
+        background-color: rgb(148, 176, 218);
+        border-radius: 12px;
+        height: 550px;
+        width: 300px;
+    }
+
+    #done-board {
+        background-color: rgb(154, 156, 173);
+        border-radius: 12px;
+        height: 550px;
+        width: 300px;
+    }
+
+    .task-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .task-list {
+            min-width: 30%;
+            list-style: none;
+
+            .task {
+                display: flex;
+                align-items: center;
+
+                .card {
+                background-color: rgb(239, 243, 250);
+                border-radius: 10px;
+                width: 200px;
+                padding: 7px;
+                display: flex;
+                flex-direction: row;
+                cursor: move;
+                margin-top: 20px;
+                justify-content: center;
+            
+                
+
+                    .task {
+                        border: none;
+                        background-color: rgb(239, 243, 250);
+                        font-size: 16px;
+                    }
+                
+                    #priority-button {
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                }  
+
+                button.deleteBtn {
+                    padding: 5px;
+                    border: none;
+                }
+            }
+        }
+    }
+    
+    
+
+}
+
+.card:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.card:hover::after {
+    opacity: .1;
+}
+
+/*@media only screen and (max-width: 850px) {
+    .main-board-container {
+        position: absolute;
+        top: 60%;
+        left: 5%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .main-board-container {
+        position: absolute;
+        top: 60%;
+        left: 0%;
+    }
+}*/

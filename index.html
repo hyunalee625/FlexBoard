@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Flex Board</title>
+        <link rel="stylesheet" href="./dist/main.css" />
+        <link rel="stylesheet" href="./src/styles/reset.scss" />
+        <!-- <link rel="stylesheet" href="./src/styles/index.scss" /> -->
+    </head>
+
+    <body>
+        <div class="main-flexboard-container">
+            <div class="flexboard-top">
+                <div class="flexboard-header">Flex Board</div>
+            </div>
+            <div class="main-board-container">
+                <div class="sub-board-container">
+                    <div class="card-board-container">
+                        <div id="todo-board" class="boards">
+                                <div class="stage">To Do</div>
+                                <form class="task-form">
+                                    <input type="text" class="task-input">
+                                    <button class="task-btn">+</button>
+                                </form>
+                                <div class="task-container">
+                                    <ul class="task-list">
+                                
+                                    </ul>
+                                </div>
+
+                            
+                            <!-- <div class="task-list">
+                                <div class="card" draggable="true"> -->
+                                    <!-- <input type="text" class="task"></input>
+                                    <div id="priority-button">
+                                    <button id="priority-high" class="priority-status">Medium</button>
+                                    </div> -->
+                                <!-- </div>
+                                <div class="card" draggable="true"> -->
+                                    <!-- <input type="text" class="task"></input>
+                                    <div id="priority-button">
+                                        <button id="priority-high" class="priority-status">Low</button>
+                                    </div> -->
+                                <!-- </div> -->
+                        </div>
+
+                        <!-- </div> -->
+                    </div>
+                    <div class="card-board-container"> 
+                        <div id="doing-board" class="boards">                   
+                                <div class="stage">Doing</div>
+                                <form class="task-form">
+                                    <input type="text" class="task-input">
+                                    <button class="task-btn">+</button>
+                                </form>
+               
+                            <div class="task-list">
+                                <div class="card" draggable="true">
+                                    <!-- <input type="text" class="task"></input>
+                                    <div id="priority-button">
+                                        <button onclick="selectPriority()" class="priority-status">High</button>
+                                        <div id="priorityDropdown" class="dropdown-content"></div> -->
+                                        <!-- <div id="select-priority">
+                                            <div>None</div>
+                                            <div>Low</div>
+                                            <div>Medium</div>
+                                            <div>High</div>
+                                        </div> -->
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-board-container">
+                        <div id="done-board" class="boards">
+                                <div class="stage">Done</div>
+                                    <form class="task-form">
+                                        <input type="text" class="task-input">
+                                        <button class="task-btn">+</button>
+                                    </form>
+                            <div class="task-container">
+                                <ul class="task-list">
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        <script src="./dist/main.js"></script>
+    </body>
+
+</html>
