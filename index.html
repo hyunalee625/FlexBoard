@@ -18,74 +18,57 @@
             </div>
             <div class="main-board-container">
                 <div class="sub-board-container">
-                    <div class="card-board-container">
+                    <div class="card-board-container drop-board">
                         <div id="todo-board" class="boards">
+                            <!-- <div class="drop-board">                            -->
                                 <div class="stage">To Do</div>
-                                <form class="task-form">
-                                    <input type="text" class="task-input">
-                                    <button class="task-btn">+</button>
-                                </form>
-                                <div class="task-container">
-                                    <ul class="task-list">
+                           
+                                <div class="card-form">
+                                    <input type="text" id="todo-card-input">
+                                    <button id="do-add-card-btn">+</button>
+                                </div>
+                                <div class="card-container">
+                                    <ul class="cards" id="do-card-list">
                                 
                                     </ul>
                                 </div>
-
-                            
-                            <!-- <div class="task-list">
-                                <div class="card" draggable="true"> -->
-                                    <!-- <input type="text" class="task"></input>
-                                    <div id="priority-button">
-                                    <button id="priority-high" class="priority-status">Medium</button>
-                                    </div> -->
-                                <!-- </div>
-                                <div class="card" draggable="true"> -->
-                                    <!-- <input type="text" class="task"></input>
-                                    <div id="priority-button">
-                                        <button id="priority-high" class="priority-status">Low</button>
-                                    </div> -->
-                                <!-- </div> -->
+                            <!-- </div> -->
                         </div>
 
                         <!-- </div> -->
                     </div>
-                    <div class="card-board-container"> 
-                        <div id="doing-board" class="boards">                   
+                    <div class="card-board-container drop-board"> 
+                        <div id="doing-board" class="boards">  
+                            <!-- <div class="drop-board">                                           -->
                                 <div class="stage">Doing</div>
-                                <form class="task-form">
-                                    <input type="text" class="task-input">
-                                    <button class="task-btn">+</button>
-                                </form>
-               
-                            <div class="task-list">
-                                <div class="card" draggable="true">
-                                    <!-- <input type="text" class="task"></input>
-                                    <div id="priority-button">
-                                        <button onclick="selectPriority()" class="priority-status">High</button>
-                                        <div id="priorityDropdown" class="dropdown-content"></div> -->
-                                        <!-- <div id="select-priority">
-                                            <div>None</div>
-                                            <div>Low</div>
-                                            <div>Medium</div>
-                                            <div>High</div>
-                                        </div> -->
-                                    <!-- </div> -->
+                            
+                                <div class="card-form">
+                                    <input type="text" id="doing-card-input">
+                                    <button id="doing-add-card-btn">+</button>
                                 </div>
-                            </div>
+                                     <div class="card-container">
+                                        <ul class="cards" id="doing-card-list">
+                                
+                                        </ul>
+                                </div>
+                            <!-- </div> -->
                         </div>
                     </div>
-                    <div class="card-board-container">
+                    <div class="card-board-container drop-board">
                         <div id="done-board" class="boards">
+                            <!-- <div class="drop-board"> -->
                                 <div class="stage">Done</div>
-                                    <form class="task-form">
-                                        <input type="text" class="task-input">
-                                        <button class="task-btn">+</button>
-                                    </form>
-                            <div class="task-container">
-                                <ul class="task-list">
+                            
+                                <div class="card-form">
+                                    <input type="text" id="done-card-input">
+                                    <button id="done-add-card-btn">+</button>
+                                </div>
+                            <div class="card-container">
+                                <ul class="cards" id="done-card-list">
 
                                 </ul>
                             </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>
