@@ -224,19 +224,23 @@ body {
   background: rgba(17, 17, 17, 0.4);
 }
 
+
+
 #modal {
   display: block;
   position: fixed;
   z-index: 100;
-  width: 25%;
+  width: 30%;
+  height: 45%;
   background-size: 400% 400%;
   padding: 40px;
   text-align: center;
   border: none;
-  left: 35%;
+  left: 29%;
   top: 17%;
   background-color: lavenderblush;
   border-radius: 2em 8em;
+  border: 2px solid black;
 
   #welcome {
       font-size: 25px;
@@ -247,8 +251,73 @@ body {
       font-size: 17px;
       font-weight: 600;
   }
+
+  .slides {
+      display: flex;
+      height: 100%;
+      width: 330%;
+      /*border: 1px solid blue;*/
+      justify-content: center;
+      align-items: center;
+      transition: 2s;
+    }
 }
 
+.carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 650px;
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slide p {
+    width: 380px;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.manual {
+    position: absolute;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid rgb(248, 124, 163);
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    margin-right: 10px;
+}
+.manual-btn:hover {
+      background-color: rgb(248, 124, 163);
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -68.5%;
+}
+
+#radio3:checked ~ .first {
+    margin-left: -139%;
+}
 
 
 /*@media only screen and (max-width: 850px) {
