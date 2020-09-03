@@ -8,19 +8,58 @@
         <title>Flex Board</title>
         <link rel="stylesheet" href="./dist/main.css" />
         <link rel="stylesheet" href="./src/styles/reset.scss" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="/src/img/favicon.ico" />
+
         <!-- <link rel="stylesheet" href="./src/styles/index.scss" /> -->
     </head>
 
     <body>
         <div class="main-flexboard-container">
-            <div class="flexboard-top">
-                <div class="flexboard-header">Flex Board</div>
+            <div class="main-page"></div>
+            <div id="modal">
+                <div class="slides">
+                    <input type="radio" class="radio-btn" id="radio1">
+                    <input type="radio" class="radio-btn" id="radio2">
+                    <input type="radio" class="radio-btn" id="radio3">
+
+                    <div class="slide1">
+                        <p id="welcome">Welcome to Flex Board!</p>
+                    
+                        <p id="questions"> What is Flex Board? </p>
+                            <p>Flex Board is a visual task management board that maximizes work efficiency. If you are feeling overwhelmed or
+                            looking to be more organized, Flex Board can help you stay on top of your work.<p>
+                    </div>
+                    <div class="slide2">
+                        <p id="questions"> How do I use it? </p> 
+                            <p>Under each stage (To Do, Doing, and Done), click on the + button to create a card inputting your task.
+                            Once the card is created, you can drag and drop the card to a different stage!</p>
+                    </div>
+                    <div class="slide3">
+                            <p id="questions"> Oh no, I made a typo, can I edit? </p>
+                            <p>Of course, click on the task directly and you can edit as you wish. It's as simple as that! If you no longer need the task, press the del button and voila! it's gone. </p>
+                    </div>
+                </div>
             </div>
+
+        
+
+            <nav class="nav-main-container">
+                <div class="left-nav-conatiner">
+                    <div class="flexboard-header">Flex Board</div>                   
+                </div>
+                <div class="right-nav-conatiner">
+                    <ul class="right-nav">
+                            <button id='instructions'>Instructions</button>
+                        <li class="social"><a href="https://github.com/hyunalee625"><img id="contact-icon" src="src/img/github.png"></i></a></li>
+                        <li class="social"><a href="https://www.linkedin.com/in/lauren-hyuna-lee/"><img id="contact-icon" src="src/img/linkedin.png"></i></a></li>
+                    </ul>
+                </div>
+            </nav>
             <div class="main-board-container">
-                <div class="sub-board-container">
+                <div class="sub-board-container drop-boards">
                     <div class="card-board-container drop-board">
                         <div id="todo-board" class="boards">
-                            <!-- <div class="drop-board">                            -->
                                 <div class="stage">To Do</div>
                            
                                 <div class="card-form">
@@ -32,14 +71,10 @@
                                 
                                     </ul>
                                 </div>
-                            <!-- </div> -->
                         </div>
-
-                        <!-- </div> -->
                     </div>
                     <div class="card-board-container drop-board"> 
                         <div id="doing-board" class="boards">  
-                            <!-- <div class="drop-board">                                           -->
                                 <div class="stage">Doing</div>
                             
                                 <div class="card-form">
@@ -51,12 +86,10 @@
                                 
                                         </ul>
                                 </div>
-                            <!-- </div> -->
                         </div>
                     </div>
                     <div class="card-board-container drop-board">
                         <div id="done-board" class="boards">
-                            <!-- <div class="drop-board"> -->
                                 <div class="stage">Done</div>
                             
                                 <div class="card-form">
@@ -65,10 +98,12 @@
                                 </div>
                             <div class="card-container">
                                 <ul class="cards" id="done-card-list">
-
+                                    <!-- **visual purpose** <li class="done-card-container">
+                                        <div class="done-card">Groceries</div>
+                                        <div class="done-delete-btn">X</div>
+                                    </li> -->
                                 </ul>
                             </div>
-                            <!-- </div> -->
                         </div>
                     </div>
                 </div>

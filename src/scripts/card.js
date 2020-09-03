@@ -1,103 +1,9 @@
-// const taskInput = document.querySelector('.task-input')
-// const taskBtn = document.querySelector('.task-btn');
-// const taskList = document.querySelector('.task-list')
-
-// // document.addEventListener('DOMContentLoaded', displaydoingTasks)
-// taskBtn.addEventListener("click", addTask);
-// taskList.addEventListener('click', deleteTask);
-
-
-// function addTask(e) {
-//     e.preventDefault();
-
-//     const taskDiv = document.createElement("div");
-//     taskDiv.classList.add("task");
-
-//     const newTask = document.createElement("li");
-//     newTask.innerText = taskInput.value;
-//     newTask.classList.add('card');
-//     taskDiv.appendChild(newTask);
-//     // card.draggable = true;
-
-//     // saveTasks(taskInput.value);
-
-//     const deleteBtn = document.createElement('button');
-//     deleteBtn.innerHTML = '&#128465';
-//     deleteBtn.classList.add("delete-btn");
-//     taskDiv.appendChild(deleteBtn); 
-
-//     taskList.appendChild(taskDiv);
-//     // after appending, remove the value from the input box
-//     taskInput.value = "";
-// }
-
-// function deleteTask(e) {
-//     const itemToDelete = e.target;
-
-//     if (itemToDelete.classList[0] === "delete-btn") {
-//         itemToDelete.parentElement.remove();
-//         removeLocalStorage(task);
-//     }
-// }
-
-// function saveTasks(task) {
-//     let tasks;
-//     if (localStorage.getItem('tasks') === null) {
-//         tasks = [];
-//     } else {
-//         tasks = JSON.parse(localStorage.getItem('tasks'));
-//     }
-
-//     tasks.push(task);
-//     localStorage.setItem('tasks', JSON.stringify(tasks));
-// }
-
-// function displayTasks() {
-//     let tasks;
-
-//     if (localStorage.getItem('tasks') === null) {
-//         tasks = [];
-//     } else {
-//         tasks = JSON.parse(localStorage.getItem('tasks'));
-//     }
-
-//     tasks.forEach(function(task) {
-//         const taskDiv = document.createElement("div");
-//         taskDiv.classList.add("task");
-
-//         const newTask = document.createElement("li");
-//         newTask.innerText = task;
-//         newTask.classList.add('card');
-//         taskDiv.appendChild(newTask);
-
-//         const deleteBtn = document.createElement('button');
-//         deleteBtn.innerHTML = '&#128465';
-//         deleteBtn.classList.add("delete-btn");
-//         taskDiv.appendChild(deleteBtn);
-
-//         taskList.appendChild(taskDiv);
-//     })
-// }
-
-// function removeLocalStorage(task) {
-//     let tasks;
-    
-//     if (localStorage.getItem('tasks') === null) {
-//         tasks = [];
-//     } else {
-//         tasks = JSON.parse(localStorage.getItem('tasks'));
-//     }
-
-//     const taskIndex = task.children[0].innerText;
-//     tasks.splice(tasks.indexOf(taskIndex), 1);
-//     localStorage.setItem("tasks", JSON.stringify(tasks))
-// }
-
 /////// TO-DO BOARD ///////
 document.getElementById('do-add-card-btn').addEventListener("click", function() {
     let doCardInput = document.getElementById('todo-card-input').value 
     // console.log(doCardInput)
     addDoCard(doCardInput);
+    document.getElementById('todo-card-input').value = '';
 
 })
 
@@ -107,6 +13,7 @@ const addDoCard = doCardInput => {
     doCard.classList.add('do-card-container')
     // card.classList.add('fill');
     doCard.draggable = true;
+    doCard.contentEditable = true;
     doCard.addEventListener('dragstart', dragStart);
     doCard.addEventListener('dragend', dragEndDo);
 
@@ -115,16 +22,32 @@ const addDoCard = doCardInput => {
     doCardDiv.innerText = doCardInput;
     // console.log(doCardDiv);
 
-    let doDeleteCard = document.createElement('div');
-    doDeleteCard.classList.add('do-delete-btn');
-    doDeleteCard.innerHTML = '&#128465';
-    doDeleteCard.addEventListener('click', deleteCard)
+    let doDeleteBtn = document.createElement('button');
+    doDeleteBtn.classList.add('do-delete-btn');
+    doDeleteBtn.innerText = 'del';
+    doDeleteBtn.addEventListener('click', deleteBtn)
+
+    // let priorityBtn = document.createElement('div');
+    // priorityBtn.classList.add('priorityBtn');
+    // priorityBtn.innerText = 'Priority';
+    // priorityBtn.addEventListener('click', choosePriority)
+
+    // let lowPriority = document.createElement('div');
+    // lowPriority.classList = 'low';
+    // lowPriority.innerText = 'Low'
+
+    // priorityBtn.appendChild(lowPriority);
 
     doCard.appendChild(doCardDiv);
-    doCard.appendChild(doDeleteCard);
+    doCard.appendChild(doDeleteBtn);
+    // doCard.appendChild(doEditBtn);
+    // doCard.appendChild(priorityBtn);
     
     let doCards = document.getElementById('do-card-list');
     doCards.appendChild(doCard);
+    // using doCards.appendChild(doCard) will place the new card on top of the old card
+
+
 }
 
 ///// DOING BOARD ///////
@@ -132,7 +55,7 @@ document.getElementById('doing-add-card-btn').addEventListener("click", function
     let doingCardInput = document.getElementById('doing-card-input').value
     console.log(doingCardInput)
     addDoingCard(doingCardInput);
-
+    document.getElementById('doing-card-input').value = '';
 })
 
 const addDoingCard = doingCardInput => {
@@ -141,21 +64,23 @@ const addDoingCard = doingCardInput => {
     doingCard.classList.add('doing-card-container')
     // doingCard.classList.add('fill');
     doingCard.draggable = true;
+    doingCard.contentEditable = true;
     doingCard.addEventListener('dragstart', dragStart);
     doingCard.addEventListener('dragend', dragEndDoing);
 
     let doingCardDiv = document.createElement('div');
     doingCardDiv.classList.add("doing-card");
     doingCardDiv.innerText = doingCardInput;
-    console.log(doingCardDiv);
+    // console.log(doingCardDiv);
 
-    let doingDeleteCard = document.createElement('div');
-    doingDeleteCard.classList.add('doing-delete-btn');
-    doingDeleteCard.innerHTML = '&#128465';
-    doingDeleteCard.addEventListener('click', deleteCard)
+    let doingDeleteBtn = document.createElement('button');
+    doingDeleteBtn.classList.add('doing-delete-btn');
+    doingDeleteBtn.innerText = 'del';
+    doingDeleteBtn.addEventListener('click', deleteBtn)
 
     doingCard.appendChild(doingCardDiv);
-    doingCard.appendChild(doingDeleteCard);
+    doingCard.appendChild(doingDeleteBtn);
+
     
 
     let doingCards = document.getElementById('doing-card-list');
@@ -168,7 +93,7 @@ document.getElementById('done-add-card-btn').addEventListener("click", function 
     let doneCardInput = document.getElementById('done-card-input').value
     console.log(doneCardInput)
     addDoneCard(doneCardInput);
-
+    document.getElementById('done-card-input').value = '';
 })
 
 const addDoneCard = doneCardInput => {
@@ -177,36 +102,46 @@ const addDoneCard = doneCardInput => {
     doneCard.classList.add('done-card-container')
     // doneCard.classList.add('fill');
     doneCard.draggable = true;
+    doneCard.contentEditable = true;
     doneCard.addEventListener('dragstart', dragStart);
     doneCard.addEventListener('dragend', dragEndDone);
 
     let doneCardDiv = document.createElement('div');
     doneCardDiv.classList.add("done-card");
     doneCardDiv.innerText = doneCardInput;
-    console.log(doneCardDiv);
+    // console.log(doneCardDiv);
 
-    let doneDeleteCard = document.createElement('div');
-    doneDeleteCard.classList.add('done-delete-btn');
-    doneDeleteCard.innerHTML = '&#128465';
-    doneDeleteCard.addEventListener('click', deleteCard)
+    let doneDeleteBtn = document.createElement('button');
+    doneDeleteBtn.classList.add('done-delete-btn');
+    doneDeleteBtn.innerText = 'del';
+    doneDeleteBtn.addEventListener('click', deleteBtn)
 
     doneCard.appendChild(doneCardDiv);
-    doneCard.appendChild(doneDeleteCard);
+    doneCard.appendChild(doneDeleteBtn);
 
     let doneCards = document.getElementById('done-card-list');
     doneCards.appendChild(doneCard);
 }
 
-const deleteCard = (e) => {
-    const doCards = e.target.parentNode;
-    const doingCards = e.target.parentNode;
-    const doneCards = e.target.parentNode;
+const deleteBtn = (event) => {
+    const doCards = event.target.parentNode;
+    const doingCards = event.target.parentNode;
+    const doneCards = event.target.parentNode;
 
     doCards.remove();
     doingCards.remove();
     doneCards.remove();
 }
 
+// const choosePriority = (event) => {
+//     const doCards = event.target.parentNode;
+//     const doingCards = event.target.parentNode;
+//     const doneCards = event.target.parentNode;
+
+//     doCards.show();
+//     doingCards.show();
+//     doneCards.show();
+// }
 
 let card;
 
