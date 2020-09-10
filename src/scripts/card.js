@@ -13,7 +13,7 @@ const addDoCard = doCardInput => {
     doCard.classList.add('do-card-container')
     // card.classList.add('fill');
     doCard.draggable = true;
-    doCard.contentEditable = true;
+    // doCard.contentEditable = true;
     doCard.addEventListener('dragstart', dragStart);
     doCard.addEventListener('dragend', dragEndDo);
 
@@ -64,7 +64,7 @@ const addDoingCard = doingCardInput => {
     doingCard.classList.add('doing-card-container')
     // doingCard.classList.add('fill');
     doingCard.draggable = true;
-    doingCard.contentEditable = true;
+    // doingCard.contentEditable = true;
     doingCard.addEventListener('dragstart', dragStart);
     doingCard.addEventListener('dragend', dragEndDoing);
 
@@ -102,7 +102,7 @@ const addDoneCard = doneCardInput => {
     doneCard.classList.add('done-card-container')
     // doneCard.classList.add('fill');
     doneCard.draggable = true;
-    doneCard.contentEditable = true;
+    // doneCard.contentEditable = true;
     doneCard.addEventListener('dragstart', dragStart);
     doneCard.addEventListener('dragend', dragEndDone);
 
