@@ -20,11 +20,19 @@ const addDoCard = doCardInput => {
     let doCardDiv = document.createElement('div');
     doCardDiv.classList.add("do-card");
     doCardDiv.innerText = doCardInput;
-    // console.log(doCardDiv);
+
+    saveLocalDos(doCardInput)
+
+    let doCompleteBtn = document.createElement('button');
+    doCompleteBtn.classList.add('do-complete-btn');
+    doCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
+    doCompleteBtn.addEventListener('click', completeBtn)
 
     let doDeleteBtn = document.createElement('button');
     doDeleteBtn.classList.add('do-delete-btn');
-    doDeleteBtn.innerText = 'del';
+    // doDeleteBtn.innerText = 'del';
+    doDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
+
     doDeleteBtn.addEventListener('click', deleteBtn)
 
     // let priorityBtn = document.createElement('div');
@@ -39,6 +47,7 @@ const addDoCard = doCardInput => {
     // priorityBtn.appendChild(lowPriority);
 
     doCard.appendChild(doCardDiv);
+    doCard.appendChild(doCompleteBtn);
     doCard.appendChild(doDeleteBtn);
     // doCard.appendChild(doEditBtn);
     // doCard.appendChild(priorityBtn);
@@ -73,12 +82,20 @@ const addDoingCard = doingCardInput => {
     doingCardDiv.innerText = doingCardInput;
     // console.log(doingCardDiv);
 
+    let doingCompleteBtn = document.createElement('button');
+    doingCompleteBtn.classList.add('doing-complete-btn');
+    doingCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
+    doingCompleteBtn.addEventListener('click', completeBtn)
+
     let doingDeleteBtn = document.createElement('button');
     doingDeleteBtn.classList.add('doing-delete-btn');
-    doingDeleteBtn.innerText = 'del';
+    // doingDeleteBtn.innerText = 'del';
+    doingDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
+
     doingDeleteBtn.addEventListener('click', deleteBtn)
 
     doingCard.appendChild(doingCardDiv);
+    doingCard.appendChild(doingCompleteBtn);
     doingCard.appendChild(doingDeleteBtn);
 
     
@@ -111,22 +128,37 @@ const addDoneCard = doneCardInput => {
     doneCardDiv.innerText = doneCardInput;
     // console.log(doneCardDiv);
 
+    let doneCompleteBtn = document.createElement('button');
+    doneCompleteBtn.classList.add('done-complete-btn');
+    doneCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
+    doneCompleteBtn.addEventListener('click', completeBtn)
+
     let doneDeleteBtn = document.createElement('button');
     doneDeleteBtn.classList.add('done-delete-btn');
-    doneDeleteBtn.innerText = 'del';
+    doneDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
+    // doneDeleteBtn.innerText = 'del';
     doneDeleteBtn.addEventListener('click', deleteBtn)
 
     doneCard.appendChild(doneCardDiv);
+    doneCard.appendChild(doneCompleteBtn);
     doneCard.appendChild(doneDeleteBtn);
 
     let doneCards = document.getElementById('done-card-list');
     doneCards.appendChild(doneCard);
 }
 
+const completeBtn = (event) => {
+    // const doCards = event.target.parentNode.parentNode;
+    // const doingCards = event.target.parentNode.parentNode;
+    const doneCards = event.target.parentNode.parentNode.parentNode;
+
+    doneCards.classList.toggle("completed");
+}
+
 const deleteBtn = (event) => {
-    const doCards = event.target.parentNode;
-    const doingCards = event.target.parentNode;
-    const doneCards = event.target.parentNode;
+    const doCards = event.target.parentNode.parentNode;
+    const doingCards = event.target.parentNode.parentNode;
+    const doneCards = event.target.parentNode.parentNode;
 
     doCards.remove();
     doingCards.remove();
@@ -196,3 +228,27 @@ for (const dropboard of drops) {
     dropboard.addEventListener('dragleave', dragLeave);
     dropboard.addEventListener('drop', dragDrop);
 }
+
+const saveLocalDos = (todo) => {
+    let todos;
+
+    if(localStorage.getItem('do-card-container') === null) {
+        todos = [];
+    } else {
+        todos = localStorage.getItem("do-card-container");
+    }
+
+    todos.push(todo);
+}
+
+// const saveLocalDos = (todo) => {
+//   let todos;
+
+//   if (localStorage.getItem("do-card-container") === null) {
+//     todos = [];
+//   } else {
+//     todos = localStorage.getItem("do-card-container");
+//   }
+
+//   todos.push(todo);
+// };

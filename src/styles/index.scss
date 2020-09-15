@@ -154,6 +154,7 @@ body {
     background-color: rgb(239, 243, 250);
     border-radius: 10px;
     width: 275px;
+    margin-bottom: 0.5em;
     /*justify-content: center;*/
     /*align-items: center;  */
 }
@@ -182,14 +183,19 @@ body {
     opacity: .1;
 }
 
-.do-delete-btn, .doing-delete-btn, .done-delete-btn {
+.do-delete-btn, .doing-delete-btn, .done-delete-btn, .do-complete-btn, .doing-complete-btn, .done-complete-btn {
     background-color: rgb(215, 218, 223);
     border: 1;
     font-size: 1rem;
     border-radius: 10px;
     padding: 3px;
-    margin: 1vh;
+    margin: 0.5vh;
     cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.3;;
 }
                 
 .invisible {
