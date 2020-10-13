@@ -4,25 +4,31 @@ document.getElementById('do-add-card-btn').addEventListener("click", function() 
     // console.log(doCardInput)
     addDoCard(doCardInput);
     document.getElementById('todo-card-input').value = '';
-
+    
 })
+
+
 
 const addDoCard = doCardInput => {
     let doCard = document.createElement('li');
-
+    
     doCard.classList.add('do-card-container')
     // card.classList.add('fill');
     doCard.draggable = true;
     // doCard.contentEditable = true;
     doCard.addEventListener('dragstart', dragStart);
     doCard.addEventListener('dragend', dragEndDo);
-
+    
     let doCardDiv = document.createElement('div');
     doCardDiv.classList.add("do-card");
     doCardDiv.innerText = doCardInput;
-
-    saveLocalDos(doCardInput)
-
+    
+    if (doCardInput === '') {
+        alert("Can't be blank!")
+    } else {
+        saveLocalDos(doCardInput);
+    }
+    document.addEventListener('DOMContentLoaded', getLocalDos)
     let doCompleteBtn = document.createElement('button');
     doCompleteBtn.classList.add('do-complete-btn');
     doCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
@@ -30,33 +36,17 @@ const addDoCard = doCardInput => {
 
     let doDeleteBtn = document.createElement('button');
     doDeleteBtn.classList.add('do-delete-btn');
-    // doDeleteBtn.innerText = 'del';
     doDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
-
+    // removeLocaldos(doCardDiv)
+    
     doDeleteBtn.addEventListener('click', deleteBtn)
-
-    // let priorityBtn = document.createElement('div');
-    // priorityBtn.classList.add('priorityBtn');
-    // priorityBtn.innerText = 'Priority';
-    // priorityBtn.addEventListener('click', choosePriority)
-
-    // let lowPriority = document.createElement('div');
-    // lowPriority.classList = 'low';
-    // lowPriority.innerText = 'Low'
-
-    // priorityBtn.appendChild(lowPriority);
-
+    
     doCard.appendChild(doCardDiv);
     doCard.appendChild(doCompleteBtn);
     doCard.appendChild(doDeleteBtn);
-    // doCard.appendChild(doEditBtn);
-    // doCard.appendChild(priorityBtn);
     
     let doCards = document.getElementById('do-card-list');
     doCards.appendChild(doCard);
-    // using doCards.appendChild(doCard) will place the new card on top of the old card
-
-
 }
 
 ///// DOING BOARD ///////
@@ -80,8 +70,12 @@ const addDoingCard = doingCardInput => {
     let doingCardDiv = document.createElement('div');
     doingCardDiv.classList.add("doing-card");
     doingCardDiv.innerText = doingCardInput;
-    // console.log(doingCardDiv);
-
+    
+    if (doingCardInput === '') {
+        alert("Can't be blank!")
+    } else {
+        saveLocalDoings(doingCardInput);
+    }
     let doingCompleteBtn = document.createElement('button');
     doingCompleteBtn.classList.add('doing-complete-btn');
     doingCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
@@ -89,7 +83,6 @@ const addDoingCard = doingCardInput => {
 
     let doingDeleteBtn = document.createElement('button');
     doingDeleteBtn.classList.add('doing-delete-btn');
-    // doingDeleteBtn.innerText = 'del';
     doingDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
 
     doingDeleteBtn.addEventListener('click', deleteBtn)
@@ -98,12 +91,9 @@ const addDoingCard = doingCardInput => {
     doingCard.appendChild(doingCompleteBtn);
     doingCard.appendChild(doingDeleteBtn);
 
-    
-
     let doingCards = document.getElementById('doing-card-list');
     doingCards.appendChild(doingCard);
 }
-
 
 ///// DONE BOARD ///////
 document.getElementById('done-add-card-btn').addEventListener("click", function () {
@@ -126,8 +116,12 @@ const addDoneCard = doneCardInput => {
     let doneCardDiv = document.createElement('div');
     doneCardDiv.classList.add("done-card");
     doneCardDiv.innerText = doneCardInput;
-    // console.log(doneCardDiv);
-
+    
+    if (doneCardInput === '') {
+        alert("Can't be blank!")
+    } else {
+        saveLocalDones(doneCardInput);
+    };
     let doneCompleteBtn = document.createElement('button');
     doneCompleteBtn.classList.add('done-complete-btn');
     doneCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
@@ -136,7 +130,6 @@ const addDoneCard = doneCardInput => {
     let doneDeleteBtn = document.createElement('button');
     doneDeleteBtn.classList.add('done-delete-btn');
     doneDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
-    // doneDeleteBtn.innerText = 'del';
     doneDeleteBtn.addEventListener('click', deleteBtn)
 
     doneCard.appendChild(doneCardDiv);
@@ -145,6 +138,7 @@ const addDoneCard = doneCardInput => {
 
     let doneCards = document.getElementById('done-card-list');
     doneCards.appendChild(doneCard);
+
 }
 
 const completeBtn = (event) => {
@@ -165,15 +159,6 @@ const deleteBtn = (event) => {
     doneCards.remove();
 }
 
-// const choosePriority = (event) => {
-//     const doCards = event.target.parentNode;
-//     const doingCards = event.target.parentNode;
-//     const doneCards = event.target.parentNode;
-
-//     doCards.show();
-//     doingCards.show();
-//     doneCards.show();
-// }
 
 let card;
 
@@ -229,26 +214,88 @@ for (const dropboard of drops) {
     dropboard.addEventListener('drop', dragDrop);
 }
 
+
 const saveLocalDos = (todo) => {
-    let todos;
+  let todos;
 
-    if(localStorage.getItem('do-card-container') === null) {
-        todos = [];
-    } else {
-        todos = localStorage.getItem("do-card-container");
-    }
+  if (localStorage.getItem("do-card-container") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("do-card-container"));
+  }
 
-    todos.push(todo);
+  todos.push(todo);
+  localStorage.setItem('do-card-container', JSON.stringify(todos))
+};
+
+const saveLocalDoings = (doing) => {
+  let doings;
+
+  if (localStorage.getItem("doing-card-container") === null) {
+    doings = [];
+  } else {
+    doings = JSON.parse(localStorage.getItem("doing-card-container"));
+  }
+
+  doings.push(doing);
+  localStorage.setItem('doing-card-container', JSON.stringify(doings))
+};
+
+const saveLocalDones = (done) => {
+  let dones;
+
+  if (localStorage.getItem("done-card-container") === null) {
+    dones = [];
+  } else {
+    dones = JSON.parse(localStorage.getItem("done-card-container"));
+  }
+
+  dones.push(done);
+  localStorage.setItem('done-card-container', JSON.stringify(dones))
+};
+
+const getLocalDos = () => {
+  if (localStorage.getItem("do-card-container") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("do-card-container"));
+  }
+
+  todos.forEach(function(todo) {
+    let doCardDiv = document.createElement('div');
+    doCardDiv.classList.add("do-card");
+    doCardDiv.innerText = todo;
+
+    let doCompleteBtn = document.createElement('button');
+    doCompleteBtn.classList.add('do-complete-btn');
+    doCompleteBtn.innerHTML = '<i class="fa">&#10003</i>'
+    doCompleteBtn.addEventListener('click', completeBtn)
+
+    let doDeleteBtn = document.createElement('button');
+    doDeleteBtn.classList.add('do-delete-btn');
+    doDeleteBtn.innerHTML = '<i class="fa">&#xf014</i>'
+
+    doDeleteBtn.addEventListener('click', deleteBtn)
+
+    doCard.appendChild(doCardDiv);
+    doCard.appendChild(doCompleteBtn);
+    doCard.appendChild(doDeleteBtn);
+    
+    let doCards = document.getElementById('do-card-list');
+    doCards.appendChild(doCard);
+  })
 }
 
-// const saveLocalDos = (todo) => {
-//   let todos;
+const removeLocaldos = (todo) => {
+    let todos;
 
-//   if (localStorage.getItem("do-card-container") === null) {
-//     todos = [];
-//   } else {
-//     todos = localStorage.getItem("do-card-container");
-//   }
+  if (localStorage.getItem("do-card-container") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("do-card-container"));
+  }
 
-//   todos.push(todo);
-// };
+  const doIdx = todo.children[0];
+  todos.splice(todos.indexOf(doIdx), 1)
+  localStorage.setItem('todos', JSON.stringify(todos))
+}

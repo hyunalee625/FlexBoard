@@ -39,14 +39,19 @@ body {
 }
 
 .right-nav {
-    display: flex;
-
+    display: inline-flex;
 }
 
 .social {
     list-style: none;
     margin: 0 2.5vh;
 }
+
+.date {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
 
 .main-board-container {
     /*background-color: rgb(139, 223, 157);*/
@@ -203,9 +208,6 @@ body {
 }
 
 #instructions {
-    /*border: 1px solid black;
-    background-color: rgb(237, 241, 248);
-    border-radius: 12px;*/
     border: 0;
     margin: 0 2.5vh;
     padding: 3px;
